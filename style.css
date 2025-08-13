@@ -1,4 +1,4 @@
-* {
+/* * { 
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -63,13 +63,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: slideshow 50s linear infinite;
+  animation: slideshow 30s linear infinite;
 }
 .slide-img {
   height: calc(100% - 20px);
   width: 250px;
   margin: 0 20px;
-  cursor: pointer;
   transition: transform 0.3s ease-in-out;
   flex-shrink: 0;
 }
@@ -81,7 +80,7 @@ body {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-80%);
+    transform: translateX(-100%);
   }
 }
 .neon-text {
@@ -89,14 +88,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 10px;
   position: relative;
-  bottom: 75px;
+  bottom: 85px;
   font-size: 40px;
   font-weight: 800;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   text-transform: uppercase;
-  color: #2e2416; /* цвет неона */
+  color: #2e2416;
   text-shadow: 0 0 20px #edecea, 0 0 20px #edecea, 0 0 30px #edecea,
     0 0 50px #edecea;
   animation: pulse 2s ease-in-out infinite;
@@ -118,5 +118,149 @@ body {
     bottom: 75px;
     font-size: 30px;
     font-weight: 700;
+  }
+}
+*/
+/* Сброс и базовые стили */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: black;
+}
+
+/* Фоновое изображение */
+.big-img {
+  position: fixed;
+  top: 0;
+  z-index: -1;
+  height: 100vh;
+  width: 100%;
+  background: url(photos/1-8.jpg) center center / cover no-repeat;
+  opacity: 0.7;
+}
+
+/* Обёртка карусели */
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - 20px);
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+/* Карусель */
+.carousel {
+  position: relative;
+  transform: translateY(60px); /* плавный сдвиг вместо top */
+  display: flex;
+  height: 300px;
+  width: 100%;
+  background-color: rgba(229, 207, 130, 0.3);
+  box-shadow: 0px 15px 20px -15px rgb(5, 5, 5);
+  overflow: hidden;
+}
+
+/* Градиенты по краям */
+.carousel::before,
+.carousel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100px;
+  z-index: 1;
+}
+
+.carousel::before {
+  left: 0;
+  background: linear-gradient(to right, #f4f4f6 0%, transparent 100%);
+}
+
+.carousel::after {
+  right: 0;
+  background: linear-gradient(to right, transparent 0%, #f4f4f6 100%);
+}
+
+/* Слайд */
+.slide {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  animation: slideshow 30s linear infinite;
+  will-change: transform; /* оптимизация GPU */
+}
+
+/* Изображения внутри слайда */
+.slide-img {
+  height: calc(100% - 20px);
+  width: 250px;
+  margin: 0 20px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease-in-out;
+}
+
+.slide-img:hover {
+  transform: scale(1.2); /* уменьшила масштаб для плавности */
+}
+
+/* Анимация карусели через transform */
+@keyframes slideshow {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Текст неона */
+.neon-text {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+  position: relative;
+  bottom: 85px;
+  font-size: 40px;
+  font-weight: 800;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  text-transform: uppercase;
+  color: #2e2416;
+  text-shadow: 0 0 20px #edecea, 0 0 30px #edecea;
+  animation: pulse 2s ease-in-out infinite;
+  will-change: text-shadow; /* оптимизация */
+}
+
+/* Пульсация текста неона */
+@keyframes pulse {
+  0%,
+  100% {
+    text-shadow: 0 0 20px #edecea, 0 0 30px #edecea;
+  }
+  50% {
+    text-shadow: 0 0 25px #edecea, 0 0 35px #edecea;
+  }
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+  .neon-text {
+    bottom: 75px;
+    font-size: 30px;
+    font-weight: 700;
+  }
+
+  .slide-img {
+    width: 180px;
+    margin: 0 10px;
   }
 }
