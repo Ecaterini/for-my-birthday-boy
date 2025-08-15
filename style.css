@@ -75,7 +75,7 @@ body {
 
 /* Изображения внутри слайда */
 .slide-img {
-  height: calc(100% - 20px);
+  height: calc(90% - 20px);
   width: 250px;
   margin: 0 20px;
   flex-shrink: 0;
@@ -104,7 +104,7 @@ body {
   align-items: center;
   padding: 0 10px;
   position: relative;
-  bottom: 85px;
+  bottom: 150px;
   font-size: 40px;
   font-weight: 800;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -126,7 +126,11 @@ body {
     text-shadow: 0 0 25px #edecea, 0 0 35px #edecea;
   }
 }
-
+.audio {
+  display: block;
+  position: relative;
+  bottom: 150px;
+}
 /* Адаптив */
 
 @media (max-width: 768px) {
@@ -139,8 +143,11 @@ body {
     background: url(photos/1-8.webp) center center / cover no-repeat;
   }
 
+  .slide-img {
+    height: calc(80% - 10px);
+  }
   .neon-text {
-    bottom: 85px;
+    bottom: 100px;
     font-size: 26px;
     font-weight: 600;
   }
@@ -148,5 +155,10 @@ body {
   .slide-img {
     width: 180px;
     margin: 0 10px;
+  }
+  .audio {
+    display: block;
+    position: relative;
+    bottom: 90px;
   }
 }
