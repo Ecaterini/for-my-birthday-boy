@@ -143,16 +143,14 @@ body {
     background: url(photos/1-8.webp) center center / cover no-repeat;
   }
 
-  .slide-img {
-    height: calc(80% - 10px);
-  }
   .neon-text {
-    bottom: 100px;
+    bottom: 130px;
     font-size: 26px;
     font-weight: 600;
   }
 
   .slide-img {
+    height: calc(90% - 10px);
     width: 180px;
     margin: 0 10px;
   }
